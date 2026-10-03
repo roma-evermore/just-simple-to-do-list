@@ -1,0 +1,65 @@
+tasks = []
+
+
+while True:
+  print("================================")
+  print("==========TO-DO-LIST============")
+  print("================================")
+  print("Choose an option:")
+  print("1. Add task")
+  print("2. Review tasks")
+  print("3. Delete task")
+  print("4. Mark task as compteled")
+  print("5. Exit")
+  
+  choice = int(input("Enter your choice: "))
+
+  if choice == 1:
+    task = str(input("Enter the task you want to add:  "))
+    tasks.append({"name": task, "completed": False})
+    print("Task is added.")
+
+  elif choice == 2:
+          print("Your tasks are:")
+
+
+          if len(tasks) == 0:
+                 print("There are no tasks in TO-DO-LIST.")
+          else:
+                 for i in range(len(tasks)):
+                       if tasks[i]["completed"]:
+                          print(f"{i + 1}. {tasks[i]['name']} - COMPLETED")
+                       else:
+                          print(f"{i + 1}. {tasks[i]['name']} - NOT COMPLETED")
+   
+
+  elif choice == 3:
+    task = str(input("Enter the line you want to remove: "))
+    
+    for item in tasks:
+        if item["name"] == task:
+            tasks.remove(item)
+            print(f"{task} is removed.")
+            break
+        else:
+            print(f"{task} was not found.")
+
+  elif choice == 4:
+     task = str(input("Enter the task you want to mark as completed: "))
+     for item in tasks:
+            if item["completed"] == True:
+               print(f"{task} is already marked as completed!")
+               break
+            if item["name"] == task:
+               item["completed"] = True
+               print(f"{task} is completed!")
+               break
+         
+
+
+  elif choice == 5:
+    print("Bye!")
+    break
+
+  else:
+    print("Please enter 1-5 number.")
